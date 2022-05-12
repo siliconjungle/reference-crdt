@@ -1,0 +1,23 @@
+{
+  "name": "@silicon-jungle/reference-crdt",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "An implementation of crdt references",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "author": "James Addison",
+  "license": "MIT",
+  "dependencies": {
+    "events": "^3.3.0",
+    "ot-text-unicode": "^4.0.0",
+    "unicount": "^1.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "jest": "^27.5.1"
+  }
+}
