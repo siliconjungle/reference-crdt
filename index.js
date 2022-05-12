@@ -18,6 +18,9 @@ console.log(generateRandomId())
 
 // Create a new object with a random memory address.
 const createObject = (data, parentId) => {
+  if (parents[parentId] === undefined) {
+    return
+  }
   const id = generateRandomId()
   values[id] = data
   parents[id] = parentId || null
@@ -27,7 +30,7 @@ const createObject = (data, parentId) => {
 
 // Merges should be resolved by smallest parent ID.
 const shouldSetParent = (id, newParentId, newParentVersion) =>
-  parents[id] && (newParentVersion < parentVersions[id] || newParentVersion === parentVersions[id] && newParentId < parents[id])
+  parents[id] !== undefined && (newParentVersion < parentVersions[id] || newParentVersion === parentVersions[id] && newParentId < parents[id])
 
 const shouldSetValue = (id, newValue, newValueVersion) =>
   newValueVersion < valueVersions[id] ||newValueVersion === valueVersions[id] && JSON.stringify(newValue) < JSON.stringify(values[id])
