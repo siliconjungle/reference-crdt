@@ -53,8 +53,8 @@ const setParent = (id, newParentId, newParentVersion) => {
 
     // This detects infinite loops it's quite slow for deeply nested children though.
     const newParentList = getParentList(id)
-    if (parentList.includes(id)) {
-      parentList.forEach(parentId => {
+    if (newParentList.includes(id)) {
+      newParentList.forEach(parentId => {
         unrooted[parentId] = true
       })
     }
