@@ -27,7 +27,7 @@ const createObject = (data, parentId) => {
 
 // Merges should be resolved by smallest parent ID.
 const shouldSetParent = (id, newParentId, newParentVersion) =>
-  newParentVersion < parentVersions[id] || newParentVersion === parentVersions[id] && newParentId < parents[id]
+  parents[id] && (newParentVersion < parentVersions[id] || newParentVersion === parentVersions[id] && newParentId < parents[id])
 
 const shouldSetValue = (id, newValue, newValueVersion) =>
   newValueVersion < valueVersions[id] ||newValueVersion === valueVersions[id] && JSON.stringify(newValue) < JSON.stringify(values[id])
