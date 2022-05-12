@@ -41,20 +41,21 @@ const shouldSetValue = (id, newValue, newValueVersion) =>
 
 const setParent = (id, newParentId, newParentVersion) => {
   if (shouldSetParent(id, newParentId, newParentVersion)) {
+    // For now i'm just removing them and then adding them if the new one changes things.
+    if (unrooted[id]) {
+      const parentList = getParentList(id)
+      parentList.forEach(parentId => {
+        delete unrooted[parentId]
+      })
+    }
     parents[id] = newParentId
     parentVersions[id] = newParentVersion
 
     // This detects infinite loops it's quite slow for deeply nested children though.
-    const parentList = getParentList(id)
+    const newParentList = getParentList(id)
     if (parentList.includes(id)) {
-      // Add elements into the unrooted keystore
       parentList.forEach(parentId => {
         unrooted[parentId] = true
-      })
-    } else if (unrooted[id]) {
-      // Remove self and all children from unrooted keystore
-      parentList.forEach(parentId => {
-        delete unrooted[parentId]
       })
     }
   }
