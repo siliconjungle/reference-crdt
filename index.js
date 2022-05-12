@@ -109,5 +109,5 @@ const getUnrootedElements = () => {
 
 // Get rooted elements
 const getRootedElements = () => {
-  return Object.keys(store).filter(key => !unrooted[key])
+  return Object.keys(parents).filter(key => !unrooted[key])
 }
