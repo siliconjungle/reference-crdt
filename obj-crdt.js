@@ -31,7 +31,7 @@ const deepCopy = (obj) => {
 export const getFieldType = (value) => {
   if (value === null) return FIELD_TYPES.NULL
   if (Array.isArray(value)) return FIELD_TYPES.ARRAY
-  return Object.keys(FIELD_TYPE_RANKINGS).includes(typeof value) ? typeof(value) : FIELD_TYPES.OTHER
+  return FIELD_TYPE_RANKINGS[typeof value] !== undefined ? typeof(value) : FIELD_TYPES.OTHER
 }
 
 const createShallowDiff = (oldObj, newObj) => {
