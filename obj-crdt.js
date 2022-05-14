@@ -119,7 +119,7 @@ const shouldReplace = (crdt, otherCrdt, crdtTypes) => {
   return crdt.version < otherCrdt.version
 }
 
-const changeCRDT = (crdt, data, lastChangeBy) => {
+const replaceCrdt = (crdt, data, lastChangeBy) => {
   const newCrdt = deepCopy(crdt)
   newCrdt.data = data
   newCrdt.version += 1
